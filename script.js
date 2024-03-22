@@ -22,10 +22,11 @@ clear.addEventListener("click", () => {
 
 // adding event listener for delete
 backspace.addEventListener("click", () => {
-    // if there exists a text content 
-            //remove the last element of the text content
-    // else 
-            //continue
+    if (disp2.textContent) {
+        let str = disp2.textContent;
+        str = str.substring(0, str.length - 1);
+        disp2.textContent = str;
+    }
 });
 
 
