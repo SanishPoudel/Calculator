@@ -20,6 +20,7 @@ clear.addEventListener("click", function clear() {
         disp1.removeChild(disp1.firstChild);
     }
     disp2.textContent = "0";
+    enable_buttons();
 });
 
 
@@ -58,8 +59,9 @@ operators.forEach(operator => {
             
             if (sign === "=") {
                 disp1.textContent = result;
+                disable_buttons();
             } else {
-            disp1.textContent = result + sign; 
+                disp1.textContent = result + sign; 
             }
         }
 
@@ -67,9 +69,10 @@ operators.forEach(operator => {
 
         if (disp2.textContent) {
             initial = disp2.textContent;
-            
+
             if (sign === "=") {
                 disp1.textContent = disp2.textContent;
+                disable_buttons();
             } else {
                 disp1.textContent = disp2.textContent + sign;  
             } 
@@ -90,4 +93,22 @@ function calculate(initial, final, sign) {
     } else if (sign === "÷") {
         return Number(initial) / Number(final);
     } 
+}
+
+function disable_buttons() {
+    operators.forEach(operator => {
+        operator.disabled = true;
+    })
+    nums.forEach(num => {
+        num.disabled = true;
+    })
+}
+
+function enable_buttons() {
+    operators.forEach(operator => {
+        operator.disabled = false;
+    })
+    nums.forEach(num => {
+        num.disabled = false;
+    })
 }
