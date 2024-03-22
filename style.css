@@ -1,0 +1,42 @@
+.calc {
+    /* for the entire container */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: solid;
+    border-color: black;
+    padding: 10px;
+    width: calc(100%/5);
+    aspect-ratio: 1/1.5;
+    position: absolute;
+}
+
+.display {
+    display: flex;
+    justify-content: center;
+}
+
+.erase {
+    display: flex;
+    justify-content: space-around;
+}
+
+.row1 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.row2 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.row3 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.row4 {
+    display: flex;
+    justify-content: space-around;
+}
