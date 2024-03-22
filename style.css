@@ -53,8 +53,8 @@ body {
 .clear,
 .delete,
 .nums,
-.operators,
-#equal {
+.operators
+{
     width: 100%;
     aspect-ratio: 1/0.3;
     margin: 0 0 0;
