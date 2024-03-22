@@ -12,7 +12,7 @@ let initial = "", final = "", sign = "", result = "";
 
 
 // adding event listener for clearing the display
-clear.addEventListener("click", () => {
+clear.addEventListener("click", function clear() {
     while (disp2.firstChild) {
         disp2.removeChild(disp2.firstChild);
     }
@@ -50,23 +50,32 @@ operators.forEach(operator => {
             final = disp2.textContent;
             result = (calculate(initial, final, sign));
 
-            // clearing the data in initial and final
+            // update variables for next calculation
             initial = result + "";
             final = "";
             sign = operator.textContent;
             disp2.textContent = ""; 
+            
+            if (sign === "=") {
+                disp1.textContent = result;
+            } else {
             disp1.textContent = result + sign; 
+            }
         }
 
         sign = operator.textContent;
 
         if (disp2.textContent) {
             initial = disp2.textContent;
-            disp1.textContent = disp2.textContent + sign; 
-            disp2.textContent = "";
-        }
-
             
+            if (sign === "=") {
+                disp1.textContent = disp2.textContent;
+            } else {
+                disp1.textContent = disp2.textContent + sign;  
+            } 
+            
+            disp2.textContent = "";
+        }            
     });
 });
 
