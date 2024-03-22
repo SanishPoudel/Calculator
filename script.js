@@ -3,7 +3,6 @@ let nums = document.querySelectorAll(".nums");
 let operators = document.querySelectorAll(".operators");
 let clear = document.querySelector(".clear");
 let backspace = document.querySelector(".delete");
-let equal = document.querySelector("#equal");
 let disp1 = document.querySelector(".disp1");
 let disp2 = document.querySelector(".disp2");
 
