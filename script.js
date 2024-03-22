@@ -19,6 +19,7 @@ clear.addEventListener("click", () => {
     while (disp1.firstChild) {
         disp1.removeChild(disp1.firstChild);
     }
+    disp2.textContent = "0";
 });
 
 
@@ -42,22 +43,30 @@ nums.forEach(num => {
 
 operators.forEach(operator => {
     operator.addEventListener("click", () => { 
-        sign = operator.textContent;
 
         // if there hasn't been previous calculations
-        if (!disp1.textContent) {
-            if (disp2.textContent) {
-                initial = disp2.textContent;
-                disp1.textContent = disp2.textContent + sign;
-                disp2.textContent = "";
-                console.log(sign);
-            } else {
-                disp1.textContent = "0" + sign;
-            }
+        if (disp1.textContent) {
+
+            final = disp2.textContent;
+            result = (calculate(initial, final, sign));
+
+            // clearing the data in initial and final
+            initial = result + "";
+            final = "";
+            sign = operator.textContent;
+            disp2.textContent = ""; 
+            disp1.textContent = result + sign; 
         }
-        else {
-            // calculate first and then do the above
+
+        sign = operator.textContent;
+
+        if (disp2.textContent) {
+            initial = disp2.textContent;
+            disp1.textContent = disp2.textContent + sign; 
+            disp2.textContent = "";
         }
+
+            
     });
 });
 
@@ -66,12 +75,10 @@ function calculate(initial, final, sign) {
     if (sign === "+") {
         return Number(initial) + Number(final);
     } else if (sign === "-") {
-        return  Number(initial) + Number(final);
+        return Number(initial) - Number(final);
     } else if (sign === "×") {
-        return  Number(initial) * Number(final);
+        return Number(initial) * Number(final);
     } else if (sign === "÷") {
-        return  Number(initial) / Number(final);
-    } else {
-        result = Error;
-    }
+        return Number(initial) / Number(final);
+    } 
 }
