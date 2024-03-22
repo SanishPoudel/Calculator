@@ -10,7 +10,8 @@ let disp2 = document.querySelector(".disp2");
 // Creating variables to perform calculations
 let initial = "", final = "", sign = "", result = "";
 
-// adding event listener for clear
+
+// adding event listener for clearing the display
 clear.addEventListener("click", () => {
     while (disp2.firstChild) {
         disp2.removeChild(disp2.firstChild);
@@ -20,7 +21,8 @@ clear.addEventListener("click", () => {
     }
 });
 
-// adding event listener for delete
+
+// adding event listener for deleting the last number
 backspace.addEventListener("click", () => {
     if (disp2.textContent) {
         let str = disp2.textContent;
@@ -30,14 +32,46 @@ backspace.addEventListener("click", () => {
 });
 
 
-
-
+// adding event listener for entering the numbers
 nums.forEach(num => {
     num.addEventListener("click", () => {
         disp2.textContent += num.textContent;
-        initial += num.textContent;
-        console.log(initial);
     })
 });
 
 
+operators.forEach(operator => {
+    operator.addEventListener("click", () => { 
+        sign = operator.textContent;
+
+        // if there hasn't been previous calculations
+        if (!disp1.textContent) {
+            if (disp2.textContent) {
+                initial = disp2.textContent;
+                disp1.textContent = disp2.textContent + sign;
+                disp2.textContent = "";
+                console.log(sign);
+            } else {
+                disp1.textContent = "0" + sign;
+            }
+        }
+        else {
+            // calculate first and then do the above
+        }
+    });
+});
+
+// Calculation
+function calculate(initial, final, sign) {
+    if (sign === "+") {
+        return Number(initial) + Number(final);
+    } else if (sign === "-") {
+        return  Number(initial) + Number(final);
+    } else if (sign === "×") {
+        return  Number(initial) * Number(final);
+    } else if (sign === "÷") {
+        return  Number(initial) / Number(final);
+    } else {
+        result = Error;
+    }
+}
